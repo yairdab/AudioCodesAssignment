@@ -4,7 +4,7 @@ import Suite from "./components/TableComponents/Suite";
 import LeftNavBar from './components/LeftNavBar/LeftNavBar'
 import InputBar from './components/InputBar/InputBar'
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Routes,
   Route
 } from "react-router-dom";
