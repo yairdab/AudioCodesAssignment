@@ -10,6 +10,9 @@ import Tooltip from "@mui/material/Tooltip";
 import {useNavigate}  from "react-router-dom";
 import { Icon } from "@iconify/react";
 
+import img1 from '../../assets/Mask-Group-Vision-logo.png';
+import img2 from '../../assets/User.png';
+import img3 from '../../assets//Vector.png';
 
 export default function LeftNavBar() {
   const navigate = useNavigate();
@@ -26,10 +29,10 @@ export default function LeftNavBar() {
     <Paper className="Paper">
       <MenuList>
         <MenuItem>
-        <img className="Icon" src="/Mask-Group-Vision-logo.png" alt="" />
+        <img className="Icon" src={img1} alt="" />
         </MenuItem>
         <MenuItem>
-        <img className="Icon" src="/User.png" alt="" />
+        <img className="Icon" src={img2} alt="" />
         </MenuItem>
         <Divider sx={{ background: '#863654' , width: 50, margin: 'auto'}}/>
         <Tooltip title="Test Development" key="Test">
@@ -39,7 +42,7 @@ export default function LeftNavBar() {
         </Tooltip>
         <Tooltip title="suite" key="suite">
           <MenuItem onClick={onSuiteClick}>
-          <img className="Icon" src="/Vector.png" alt="" />
+          <img className="Icon" src={img3} alt="" />
           </MenuItem>
         </Tooltip>
       </MenuList>

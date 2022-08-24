@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/AudioCodesAssignment/static/css/main.341dc90d.css",
+    "main.js": "/AudioCodesAssignment/static/js/main.7e950863.js",
+    "index.html": "/AudioCodesAssignment/index.html",
+    "main.341dc90d.css.map": "/AudioCodesAssignment/static/css/main.341dc90d.css.map",
+    "main.7e950863.js.map": "/AudioCodesAssignment/static/js/main.7e950863.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.341dc90d.css",
+    "static/js/main.7e950863.js"
+  ]
+}
