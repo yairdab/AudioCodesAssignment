@@ -22,18 +22,14 @@ export default function LeftNavBar() {
     navigate("/testcases");
   }
 
-  const onAddIconClick = () => {
-    navigate("/inputBar");
-  }
-
   return (
     <Paper className="Paper">
       <MenuList>
         <MenuItem>
-        <img className="Icon" src="/Mask-Group-Vision-logo.png" alt="image" />
+        <img className="Icon" src="/Mask-Group-Vision-logo.png" alt="" />
         </MenuItem>
-        <MenuItem onClick={onAddIconClick}>
-        <img className="Icon" src="/User.png" alt="image" />
+        <MenuItem>
+        <img className="Icon" src="/User.png" alt="" />
         </MenuItem>
         <Divider sx={{ background: '#863654' , width: 50, margin: 'auto'}}/>
         <Tooltip title="Test Development" key="Test">
@@ -43,7 +39,7 @@ export default function LeftNavBar() {
         </Tooltip>
         <Tooltip title="suite" key="suite">
           <MenuItem onClick={onSuiteClick}>
-          <img className="Icon" src="/Vector.png" alt="image" />
+          <img className="Icon" src="/Vector.png" alt="" />
           </MenuItem>
         </Tooltip>
       </MenuList>

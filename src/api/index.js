@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const url = 'http://localhost:5000';
+const url = 'https://thawing-peak-11476.herokuapp.com';
 
 export const getTestsCases = () => axios.get(`${url}/testCases`);
 export const getSuites = () => axios.get(`${url}/suites`);

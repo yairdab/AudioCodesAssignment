@@ -3,6 +3,7 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
+import TextFieldComp from '../TextField/TextFieldComp';
 
 const filtersOptions = [
   "Requirement",
@@ -27,19 +28,13 @@ export default function FilterBar(props) {
 
 
   const onClick = (event) => {
-    console.log("Inside handle change")
     const value = event.target.innerText;
-    console.log(event.target.innerText);
-    console.log("The mainFilter is: " + selectedMainFilter);
-    console.log("The secondaryFilter is: " + selectedSecondaryFilter);
 
     if(filtersOptions.includes(event.target.innerText)) {
-      console.log("Inside handleChange, setSelectedMainFilter")
       setSelectedMainFilter(value);
       onMainFilterClick(value);
     }
     else {
-      console.log("Inside handleChange, setSelectedSecondaryFilter")
       setSelectedSecondaryFilter(value);
       onSecondaryFilterClick(value);
       findFilteredResults(selectedMainFilter, value);
@@ -47,22 +42,17 @@ export default function FilterBar(props) {
   };
 
   const findFilteredResults = (type, value) => {
-    console.log("findFilteredResults");
-    console.log(type);
-    console.log(value);
-    console.log(data)
       let newData = data.filter(row => row[type.toLowerCase()] === value);
       setRows(newData);
   }
 
   const getListOfItems = (type) => {
-    console.log(type);
     let items;
     switch(type) {
       case "Assignee" : items = data.map(item => item.assignee);  break;
       case "Run":  items = data.map(item => item.run);  break;
       case "Status" : items = data.map(item => item.status);  break;
-      case "Requirement": console.log("here"); items = requirmentRows; break;
+      case "Requirement": items = requirmentRows; break;
       default: items = [];
     }
     
@@ -81,20 +71,15 @@ export default function FilterBar(props) {
   };
 
   const onClose = (event) => {
-    console.log(event.target.value);
-    console.log("OnClose")
     setFilterLabel("Filter by");
     //pressed from outside the dropdown
     if(event.target.value === undefined) {
       setOpen(false);
       setOptions(filtersOptions);
     }
-    console.log(selectedMainFilter);
-    console.log(selectedSecondaryFilter);
   };
 
   const onMainFilterClick = (type) => {
-    console.log("inside onMainFilterClick ");
     console.log(type);
     let optionsData = getListOfItems(type);
     console.log(optionsData)
@@ -102,10 +87,25 @@ export default function FilterBar(props) {
   }
 
   const onSecondaryFilterClick = () => {
-    console.log("inside onseconday ");
-    setOpen(false);
-    console.log("returning back to filtersOptions");
+    if(selectedMainFilter !== "Requirement") {
+      setOpen(false);
+    }
     setOptions(filtersOptions); //reset the options
+  }
+
+  const onRequirementFilterChange = (type, value) => {
+    if(value === "") {
+      setRows(data);
+      return;
+    }
+
+    if(type === "starts with") {
+      var regex = new RegExp("^" + value, "i");
+      setRows(data.filter(item => regex.test(item.requirement)));
+    }
+    else {
+      setRows(data.filter(item => item.requirement.toLowerCase() === value.toLowerCase()));
+    }
   }
 
   return (
@@ -118,13 +118,22 @@ export default function FilterBar(props) {
           labelId="demo-simple-select-helper-label"
           id="demo-simple-select-helper"
           label="Filter"
+          value=""
           open={open}
           onOpen={onOpen}
           onClose={onClose}
         >
-            {options.map((val) => (
-            <MenuItem name={val} onClick={onClick} value={val}>{val}</MenuItem>
-          ))}
+            {options.map((val) => {
+              if(val !== "starts with" && val !== "equals to") {
+                return (<MenuItem name={val} onClick={onClick} value={val}>{val}</MenuItem>)
+              }
+              else {
+                return (
+                  <TextFieldComp label={val} onRequirementFilterChange={onRequirementFilterChange}/>
+                )
+              }
+            }
+          )}
          
         </Select>
       </FormControl>
