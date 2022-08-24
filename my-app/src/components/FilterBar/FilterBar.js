@@ -117,7 +117,6 @@ export default function FilterBar(props) {
         <Select
           labelId="demo-simple-select-helper-label"
           id="demo-simple-select-helper"
-          value={selectedMainFilter}
           label="Filter"
           open={open}
           onOpen={onOpen}

@@ -6,6 +6,7 @@ import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import AddIcon from '@mui/icons-material/Add';
 import ClearIcon from '@mui/icons-material/Clear';
+import Paper from '@mui/material/Paper';
 import {useNavigate}  from "react-router-dom";
 import * as api from '../../api/index.js';
 
@@ -40,7 +41,8 @@ export default function FullWidthTextField() {
     }
 
   return (
-    <div>
+    <Box sx={{ width: '100%' }}>
+      <Paper sx={{ width: '75%', padding: '25px 50px 75px 50px', marginLeft: '20px', marginTop: '20px' }}>
         <div className = "UpperBar">
             <Typography sx={{ flex: '1 1 100%' }} variant="h6" id="tableTitle" component="div">
                 New Test Cases
@@ -65,6 +67,7 @@ export default function FullWidthTextField() {
                 <TextField onChange={onChange} name="description" className = "TextField" fullWidth label="Description" id="Description" />
             </Box>
         </div>
-    </div>
+    </Paper>
+    </Box>
   );
 }

@@ -11,9 +11,11 @@ import ClearIcon from '@mui/icons-material/Clear';
 import { alpha } from '@mui/material/styles';
 import {useNavigate}  from "react-router-dom";
 import * as api from '../../api/index.js';
+import AlertDialog from '../AlertDialog/AlertDialog';
 
 export default function TableToolbar(props) {
     const { numSelected, isTestCases, selected, getData, data, setRows, resetData } = props;
+    const [deleteOpen, setDeleteOpen] = useState(false);
     const [ isFilteredOpen, setIsFilteredOpen ] = useState(false);
 
     const headline = isTestCases ? "Test Cases" : "Suite";
@@ -28,6 +30,11 @@ export default function TableToolbar(props) {
     }
 
     const onDeleteClick = () => {
+      setDeleteOpen(true);
+      console.log(deleteOpen)
+    }
+
+    const deleteData = () => {
       isTestCases ? api.deleteTestCases(selected).then(() => getData()) : api.deleteSuites(selected).then(() => getData());
     }
 
@@ -69,6 +76,7 @@ export default function TableToolbar(props) {
     }
   
     return (
+      <div>
       <Toolbar
         sx={{
           pl: { sm: 2 },
@@ -118,5 +126,7 @@ export default function TableToolbar(props) {
             </IconButton>
           </Tooltip>}
       </Toolbar>
+      <AlertDialog deleteData={deleteData} deleteOpen={deleteOpen} setDeleteOpen={setDeleteOpen}/>
+      </div>
     );
   };
