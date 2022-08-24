@@ -22,6 +22,7 @@ export default function FullWidthTextField() {
         {title: "", description: "", requirement: "ST functional", status: "Open", run: "No Run", assignee: "Yair D" });
 
     const onAddClick = () => {
+        window.alert("A new Test Case was added successfully.")
         api.saveNewTestCase(testCase).then(navigate("/testCases"));
     }
 
