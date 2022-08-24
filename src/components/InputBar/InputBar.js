@@ -23,7 +23,7 @@ export default function FullWidthTextField() {
 
     const onAddClick = () => {
         window.alert("A new Test Case was added successfully.")
-        api.saveNewTestCase(testCase).then(navigate("/testCases"));
+        api.saveNewTestCase(testCase);
     }
 
     const onClearClick = () => {
@@ -54,7 +54,7 @@ export default function FullWidthTextField() {
                 </IconButton>
             </Tooltip>
 
-            <Tooltip title="Delete">
+            <Tooltip title="Cancel">
                   <IconButton onClick={onClearClick}>
                      <ClearIcon />
                  </IconButton>
