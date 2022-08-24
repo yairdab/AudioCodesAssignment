@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/AudioCodesAssignment/static/css/main.341dc90d.css",
-    "main.js": "/AudioCodesAssignment/static/js/main.6d5e785a.js",
+    "main.js": "/AudioCodesAssignment/static/js/main.f6186a2a.js",
     "index.html": "/AudioCodesAssignment/index.html",
     "main.341dc90d.css.map": "/AudioCodesAssignment/static/css/main.341dc90d.css.map",
-    "main.6d5e785a.js.map": "/AudioCodesAssignment/static/js/main.6d5e785a.js.map"
+    "main.f6186a2a.js.map": "/AudioCodesAssignment/static/js/main.f6186a2a.js.map"
   },
   "entrypoints": [
     "static/css/main.341dc90d.css",
-    "static/js/main.6d5e785a.js"
+    "static/js/main.f6186a2a.js"
   ]
 }
