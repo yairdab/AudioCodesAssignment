@@ -67,8 +67,7 @@ export default function TableToolbar(props) {
   
     const onClick = () => {
       if(numSelected > 0) { //we want to add to suite
-        saveSuit();
-        navigate("/suite");
+        saveSuit().then(navigate("/suite"));
       }
       else { //create new test case
         navigate("/inputBar");
